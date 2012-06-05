@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="DataBinding.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DataBinding"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:DataBinding.Converters" mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.Resources>
+            <converters:VisibilityConverter x:Key="CvtVisibility"/>
+            <converters:ColorConverter x:Key="CvtColor"/>
+            <converters:TextConverter x:Key="CvtText"/>
+        </Grid.Resources>
+        <Grid.DataContext>
+            <local:DataBindingHost/>
+        </Grid.DataContext>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <CheckBox IsChecked="{Binding IsOn, Mode=TwoWay}"/>
+        <TextBlock Text="Is On?" Grid.Column="1"/>
+        <TextBlock 
+            
+            Text="Now You See Me." 
+            Visibility="{Binding IsOn,Converter={StaticResource CvtVisibility}}"
+            Grid.Row="1"/>
+        <TextBlock 
+            Text="Now You Don't." 
+            Visibility="{Binding IsOn,Converter={StaticResource CvtVisibility},ConverterParameter=True}"
+            Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Text="{Binding IsOn}" Grid.Row="2"/>
+        <TextBlock Text="{Binding IsOn, Converter={StaticResource CvtText}}" Grid.Row="2" Grid.Column="1"/>
+        <Ellipse Grid.Row="3" Grid.ColumnSpan="2" Height="100" Width="100" 
+                 Fill="{Binding IsOn,Converter={StaticResource CvtColor}}"/>    
+    </Grid>
+</Page>
