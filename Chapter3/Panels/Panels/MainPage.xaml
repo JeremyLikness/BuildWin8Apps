@@ -1,0 +1,86 @@
+﻿<Page
+    x:Class="Panels.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Panels"
+    xmlns:data="using:Panels.Data"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.Resources>
+            <CollectionViewSource x:Name="CVSGrouped" IsSourceGrouped="True"/>
+            <CollectionViewSource x:Name="CVS" IsSourceGrouped="False"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="GridButton"  Content="GridView" IsEnabled="False" Click="Button_Click_2"/>
+            <Button x:Name="FlipButton"  Content="FlipView" Click="Button_Click_1"/>
+            <Button x:Name="ListButton"  Content="ListView" Click="Button_Click_3"/>
+            <Button x:Name="ListBoxButton"  Content="ListBox" Click="Button_Click_4"/>
+        </StackPanel>
+        <local:ShapeView x:Name="GridView"  Grid.Row="1"
+                  IsSwipeEnabled="True"
+                  ItemsSource="{Binding Source={StaticResource CVSGrouped}}">
+            <GridView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                    <GroupStyle.Panel>
+                        <ItemsPanelTemplate>
+                            <VariableSizedWrapGrid Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </GroupStyle.Panel>
+                </GroupStyle>
+            </GridView.GroupStyle>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <local:ItemDisplay/>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </local:ShapeView>
+        <FlipView Visibility="Collapsed" x:Name="FlipView" Grid.Row="1" ItemsSource="{Binding Source={StaticResource CVS}}">
+            <FlipView.ItemTemplate>
+                <DataTemplate>
+                    <local:ItemDisplay/>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+        </FlipView>
+        <ListView Visibility="Collapsed" x:Name="List" Grid.Row="1" ItemsSource="{Binding Source={StaticResource CVSGrouped}}">
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:ItemDisplay/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListBox Visibility="Collapsed" x:Name="ListBox" Grid.Row="1" ItemsSource="{Binding Source={StaticResource CVS}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:ItemDisplay/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>
