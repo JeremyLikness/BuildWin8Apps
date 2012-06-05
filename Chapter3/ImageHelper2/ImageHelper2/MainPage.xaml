@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="ImageHelper2.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ImageHelper2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}" PointerPressed="Grid_PointerPressed_1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="ImageTarget" Grid.Row="0" HorizontalAlignment="Center"
+            VerticalAlignment="Center" Stretch="Uniform"/>
+        <!-- Add Background="Gray" below to make the StackPanel touchable -->
+        <StackPanel Grid.Row="1" Margin="10"                        
+                    PointerPressed="StackPanel_PointerPressed_1"
+                    HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="CaptureButton" Content="Capture New Image" 
+              Click="CaptureButton_Click"/>
+            <Rectangle Width="30" Height="30" Fill="Red"  
+                Margin="20 0 0 0"
+                PointerPressed="Rectangle_PointerPressed_1"/>
+            <Button x:Name="SaveButton" Content="Save Image" 
+              Click="SaveButton_Click" Margin="20 0 0 0"/>
+        </StackPanel>
+    </Grid>
+</Page>
