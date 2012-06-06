@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="Touch.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Touch"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}" DoubleTapped="Grid_DoubleTapped_1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="EventList"
+                 KeyDown="EventList_KeyDown_1"
+            KeyUp="EventList_KeyUp_1"   
+                DoubleTapped="EventList_DoubleTapped_1"
+                 Loaded="EventList_Loaded_1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid     
+            x:Name="TouchGrid"
+            ManipulationMode="All"
+            RenderTransformOrigin="0.5,0.5"           
+            Tapped="Grid_Tapped_1"
+            Holding="Grid_Holding_1"
+            PointerEntered="TouchGrid_PointerEntered_1"
+            PointerExited="TouchGrid_PointerExited_1"
+            PointerMoved="TouchGrid_PointerMoved_1"
+            PointerPressed="Grid_PointerPressed_1"
+            PointerReleased="Grid_PointerReleased_1"
+            ManipulationDelta="Grid_ManipulationDelta_1"
+            PointerWheelChanged="TouchGrid_PointerWheelChanged_1"
+            Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.RenderTransform>
+                <CompositeTransform x:Name="Transformation"/>
+            </Grid.RenderTransform>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Ellipse HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Red"/>
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Green" Grid.Column="1"/>
+            <Image Grid.Row="1" Source="/Assets/Logo.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" FontFamily="Segoe UI Symbol" FontSize="312" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock.Text>&#xE114;</TextBlock.Text>
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Page>
