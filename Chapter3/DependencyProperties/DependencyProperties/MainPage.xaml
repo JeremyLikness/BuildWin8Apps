@@ -13,7 +13,7 @@
             <local:MyDependencyObject/>
         </Grid.DataContext>
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="Value: "/>
+            <TextBlock Text="Value: " x:Name="ValueText"/>
             <TextBlock Text="{Binding MyNumber}"/>
             <Slider Minimum="1" Maximum="100" Height="20" 
                 HorizontalAlignment="Stretch" 

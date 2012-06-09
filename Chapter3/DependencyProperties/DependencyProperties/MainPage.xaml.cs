@@ -33,6 +33,7 @@ namespace DependencyProperties
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var row = ValueText.GetValue(Grid.RowProperty);
         }
     }
 }
