@@ -183,6 +183,7 @@ namespace ImageHelper2
         private void ShowPointerPressed(string source)
         {
             var text = string.Format("Pointer pressed from {0}", source);
+            Events.Text = string.Format("{0} // {1}", Events.Text, text);
             Debug.WriteLine(text);
         }
     }
