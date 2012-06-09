@@ -7,7 +7,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -23,6 +22,5 @@
             <Button x:Name="SaveButton" Content="Save Image" 
           Click="SaveButton_Click_1" Margin="20 0 0 0"/>
         </StackPanel>
-
     </Grid>
 </Page>
