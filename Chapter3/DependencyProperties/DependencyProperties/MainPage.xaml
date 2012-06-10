@@ -15,6 +15,10 @@
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Value: " x:Name="ValueText"/>
             <TextBlock Text="{Binding MyNumber}"/>
+            <TextBlock Text="Value (Element Binding):"/>
+            <TextBlock Text="{Binding ElementName=Slider, Path=Value}"/>
+            <TextBlock Text="Font Size:"/>
+            <TextBlock  Text="{Binding RelativeSource={RelativeSource Self}, Path=FontSize}"/>
             <Slider Minimum="1" Maximum="100" Height="20" 
                 HorizontalAlignment="Stretch" 
                 Value="{Binding Path=MyNumber,Mode=TwoWay}" 
