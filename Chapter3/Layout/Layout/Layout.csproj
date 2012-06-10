@@ -126,6 +126,9 @@
     <Compile Include="Examples\VariableSizedWrapGridExample.xaml.cs">
       <DependentUpon>VariableSizedWrapGridExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Examples\ViewBoxExample.xaml.cs">
+      <DependentUpon>ViewBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Examples\WrapGridExample.xaml.cs">
       <DependentUpon>WrapGridExample.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Examples\VariableSizedWrapGridExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Examples\ViewBoxExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
