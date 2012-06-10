@@ -29,8 +29,7 @@
         </Grid.RowDefinitions>
         <CheckBox IsChecked="{Binding IsOn, Mode=TwoWay}"/>
         <TextBlock Text="Is On?" Grid.Column="1"/>
-        <TextBlock 
-            
+        <TextBlock             
             Text="Now You See Me." 
             Visibility="{Binding IsOn,Converter={StaticResource CvtVisibility}}"
             Grid.Row="1"/>
@@ -41,6 +40,6 @@
         <TextBlock Text="{Binding IsOn}" Grid.Row="2"/>
         <TextBlock Text="{Binding IsOn, Converter={StaticResource CvtText}}" Grid.Row="2" Grid.Column="1"/>
         <Ellipse Grid.Row="3" Grid.ColumnSpan="2" Height="100" Width="100" 
-                 Fill="{Binding IsOn,Converter={StaticResource CvtColor}}"/>    
+                    Fill="{Binding IsOn,Converter={StaticResource CvtColor}}"/>    
     </Grid>
 </Page>
