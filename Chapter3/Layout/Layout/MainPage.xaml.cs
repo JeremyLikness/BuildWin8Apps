@@ -12,7 +12,7 @@ namespace Layout
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private readonly List<Example> _examples = new List<Example>
+        private static readonly List<Example> Examples = new List<Example>
                                                        {
                                                            new Example
                                                                {
@@ -43,13 +43,17 @@ namespace Layout
                                                                {
                                                                    Title = "ScrollViewer",
                                                                    Demo = new ScrollViewerExample()
+                                                               },
+                                                           new Example
+                                                               {
+                                                                   Title = "ViewBox",
+                                                                   Demo = new ViewBoxExample()
                                                                }
                                                        };
 
         public MainPage()
         {
-            InitializeComponent();
-            FlipExamples.ItemsSource = _examples;
+            InitializeComponent();            
         }
 
         /// <summary>
@@ -59,6 +63,7 @@ namespace Layout
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            FlipExamples.ItemsSource = Examples;
         }
     }
 }
