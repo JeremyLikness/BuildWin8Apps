@@ -20,8 +20,8 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button x:Name="GridButton"  Content="GridView" IsEnabled="False" Click="Button_Click_2"/>
-            <Button x:Name="FlipButton"  Content="FlipView" Click="Button_Click_1"/>
             <Button x:Name="ListButton"  Content="ListView" Click="Button_Click_3"/>
+            <Button x:Name="FlipButton"  Content="FlipView" Click="Button_Click_1"/>            
             <Button x:Name="ListBoxButton"  Content="ListBox" Click="Button_Click_4"/>
         </StackPanel>
         <local:ShapeView x:Name="GridView"  Grid.Row="1"
