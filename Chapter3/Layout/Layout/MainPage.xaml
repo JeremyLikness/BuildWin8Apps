@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Layout.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Layout"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Layout Examples" Style="{StaticResource HeaderTextStyle}" Margin="10"/>
+        <TextBlock Text="The following examples demonstrate the use of different layout options. The main control for this application is a FlipView and the template to generate the title and example layouts is a ContentControl." 
+                   TextWrapping="Wrap" Grid.Row="1" Margin="10" Style="{StaticResource BodyTextStyle}"/>
+        <FlipView x:Name="FlipExamples" Grid.Row="2" ItemTemplate="{StaticResource ExampleTemplate}"/>
+    </Grid>
+</Page>
