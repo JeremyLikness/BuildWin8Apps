@@ -34,6 +34,12 @@ namespace MetroApplication
             DefaultViewModel["Groups"] = sampleDataGroups;
         }
 
+        protected override void OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+            DefaultViewModel["Groups"] = App.Instance.DataSource.ItemGroups;
+            groupGridView.ItemsSource = groupedItemsViewSource.View.CollectionGroups;
+        }
+
         /// <summary>
         /// Invoked when a group header is clicked.
         /// </summary>
