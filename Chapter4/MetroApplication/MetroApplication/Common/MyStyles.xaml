@@ -102,5 +102,10 @@
         </Setter>
     </Style>
     
-    
+    <DataTemplate x:Key="SemanticZoomTileTemplate">
+        <TextBlock
+            Text="{Binding Group.Title}"
+            FontFamily="Segoe UI Light"
+            FontSize="24" />        
+    </DataTemplate>
 </ResourceDictionary>
