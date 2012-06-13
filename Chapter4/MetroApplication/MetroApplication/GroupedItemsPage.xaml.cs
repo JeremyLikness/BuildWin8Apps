@@ -38,6 +38,7 @@ namespace MetroApplication
         {
             DefaultViewModel["Groups"] = App.Instance.DataSource.ItemGroups;
             groupGridView.ItemsSource = groupedItemsViewSource.View.CollectionGroups;
+            base.OnNavigatedTo(e);            
         }
 
         /// <summary>
