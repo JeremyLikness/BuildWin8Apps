@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using MetroApplication.Common;
 using MetroApplication.Data;
 using Windows.ApplicationModel;
@@ -6,7 +7,6 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 // The Grid App template is documented at http://go.microsoft.com/fwlink/?LinkId=234226
 
@@ -34,7 +34,7 @@ namespace MetroApplication
             get { return ((App) Current); }
         }
 
-        public Type NavigatedPage { get; private set; }
+        public Type NavigatedPage { get; set; }
 
         public SampleDataSource DataSource { get; private set; }
 
@@ -61,9 +61,10 @@ namespace MetroApplication
         /// search results, and so forth.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
-        protected override async void OnLaunched(LaunchActivatedEventArgs args)
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             DataSource = new SampleDataSource();
+            
             // Do not repeat app initialization when already running, just ensure that
             // the window is active
             if (args.PreviousExecutionState == ApplicationExecutionState.Running)
@@ -72,34 +73,14 @@ namespace MetroApplication
                 return;
             }
 
-            // Create a Frame to act as the navigation context and associate it with
-            // a SuspensionManager key
-            var rootFrame = new Frame();
-            rootFrame.Navigating += RootFrame_Navigating;
-            SuspensionManager.RegisterFrame(rootFrame, "AppFrame");
-
-            if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
-            {
-                // Restore the saved session state only when appropriate
-                await SuspensionManager.RestoreAsync();
-            }
-
-            if (rootFrame.Content == null)
-            {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                if (!rootFrame.Navigate(typeof (GroupedItemsPage), "ItemGroups"))
-                {
-                    throw new Exception("Failed to create initial page");
-                }
-            }
-
-            // Place the frame in the current Window and ensure that it is active
-            Window.Current.Content = rootFrame;
-            Window.Current.Activate();
-
             SettingsPane.GetForCurrentView().CommandsRequested += App_CommandsRequested;
+
+            var splashScreen = args.SplashScreen;
+
+            var eSplash = new ExtendedSplashScreen(splashScreen, false, args);
+            splashScreen.Dismissed += eSplash.DismissedEventHandler;
+            Window.Current.Content = eSplash;
+            Window.Current.Activate();                       
         }
 
         static void App_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
@@ -112,11 +93,6 @@ namespace MetroApplication
             args.Request.ApplicationCommands.Add(about);
         }
 
-        private void RootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
-        {
-            NavigatedPage = e.SourcePageType;
-        }
-
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
@@ -127,6 +103,8 @@ namespace MetroApplication
         private static async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
+            Debug.WriteLine(string.Format("{0} remaining",
+                e.SuspendingOperation.Deadline - DateTime.Now));
             await SuspensionManager.SaveAsync();
             deferral.Complete();
         }
