@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="EncryptionSigning.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EncryptionSigning"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Text="Text" TextWrapping="Wrap" x:Name="BigTextBox" Margin="20"/>
+        <TextBlock Text="Text" TextWrapping="Wrap" x:Name="BigTextBlock" Grid.Column="2" Margin="20"/>
+        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="1">
+            <Button Content="Encrypt >" x:Name="EncryptButton" HorizontalAlignment="Center" 
+                    Click="EncryptButton_Click_1"
+                    Margin="10" Width="100"/>
+            <Button Content="&lt; Decrypt" x:Name="DecryptButton" IsEnabled="False" HorizontalAlignment="Center" 
+                    Width="100" Click="DecryptButton_Click_1"
+                    Margin="10"/>
+            <Button Content="Sign" x:Name="SignButton" HorizontalAlignment="Center" 
+                    Width="100" Click="SignButton_Click_1"
+                    Margin="10"/>
+            <Button Content="Verify" x:Name="VerifyButton" IsEnabled="False" 
+                    Width="100" Click="VerifyButton_Click_1"
+                    HorizontalAlignment="Center" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>
