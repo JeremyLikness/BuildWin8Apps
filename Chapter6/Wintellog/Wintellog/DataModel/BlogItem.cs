@@ -30,7 +30,7 @@ namespace Wintellog.DataModel
             Initialize();
         }
 
-        public void Initialize()
+        private void Initialize()
         {            
             if (ImageUriList == null)
             {
