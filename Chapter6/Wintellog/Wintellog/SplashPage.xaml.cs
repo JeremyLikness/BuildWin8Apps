@@ -55,7 +55,8 @@ namespace Wintellog
 
         private async void ExtendedSplashScreen_Loaded(object sender, RoutedEventArgs e)
         {
-            ProgressText.Text = ApplicationData.Current.LocalSettings.Values.ContainsKey("Initialized")
+            ProgressText.Text = ApplicationData.Current.LocalSettings.Values.ContainsKey("Initialized") 
+                && (bool)ApplicationData.Current.LocalSettings.Values["Initialized"]
                                     ? "Loading blogs..."
                                     : "Initializing for first use: this may take several minutes...";
 
