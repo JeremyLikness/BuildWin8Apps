@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wintellog", "Wintellog\Wintellog.csproj", "{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccLocalPath0 = .
+		SccLocalPath1 = Wintellog
+		SccNumberOfProjects = 2
+		SccProjectName1 = Wintellog
+		SccProjectUniqueName1 = Wintellog\\Wintellog.csproj
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs04
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|ARM.ActiveCfg = Debug|ARM
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|ARM.Build.0 = Debug|ARM
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|ARM.Deploy.0 = Debug|ARM
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|x64.ActiveCfg = Debug|x64
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|x64.Build.0 = Debug|x64
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|x64.Deploy.0 = Debug|x64
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|x86.ActiveCfg = Debug|x86
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|x86.Build.0 = Debug|x86
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Debug|x86.Deploy.0 = Debug|x86
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|ARM.ActiveCfg = Release|ARM
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|ARM.Build.0 = Release|ARM
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|ARM.Deploy.0 = Release|ARM
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|x64.ActiveCfg = Release|x64
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|x64.Build.0 = Release|x64
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|x64.Deploy.0 = Release|x64
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|x86.ActiveCfg = Release|x86
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|x86.Build.0 = Release|x86
+		{6DC3C72E-5186-468E-8EE8-95CFFCCF2DCB}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
