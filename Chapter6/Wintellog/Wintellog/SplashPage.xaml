@@ -1,0 +1,15 @@
+﻿<Page
+    x:Class="Wintellog.SplashPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wintellog"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Canvas Background="White">
+        <Image x:Name="SplashImage" Stretch="None" Source="/Assets/SplashScreen.png"/>
+        <ProgressRing x:Name="Progress" Width="50" Height="50" IsActive="True" IsEnabled="True" Foreground="Black"/>
+        <TextBlock x:Name="ProgressText" Text="Initializing..." Style="{StaticResource SubheaderTextStyle}" Foreground="Black"/>
+    </Canvas>
+</Page>
