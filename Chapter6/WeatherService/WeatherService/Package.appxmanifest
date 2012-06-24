@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="7ae7e9a6-4203-4cf7-a3b4-0db5c15fef08" Publisher="CN=Jeremy" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>WeatherService</DisplayName>
+    <PublisherDisplayName>Jeremy</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.0</OSMinVersion>
+    <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="WeatherService.App">
+      <VisualElements DisplayName="WeatherService" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="WeatherService" ForegroundText="dark" BackgroundColor="white">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
