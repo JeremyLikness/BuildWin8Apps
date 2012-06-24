@@ -124,7 +124,7 @@ namespace Wintellog.DataModel
             }
         }
 
-        private async Task<IList<BlogGroup>> LoadCachedGroups()
+        private static async Task<IList<BlogGroup>> LoadCachedGroups()
         {
             var retVal = new List<BlogGroup>();
             foreach (var item in await StorageUtility.ListItems(GROUP_FOLDER))
@@ -142,7 +142,7 @@ namespace Wintellog.DataModel
             return retVal;
         }
 
-        private async Task<IList<BlogGroup>> LoadLiveGroups()
+        private static async Task<IList<BlogGroup>> LoadLiveGroups()
         {
             var retVal = new List<BlogGroup>();
             var info = NetworkInformation.GetInternetConnectionProfile();
@@ -331,7 +331,10 @@ namespace Wintellog.DataModel
 
         private static SyndicationClient GetSyndicationClient()
         {
-            var client = new SyndicationClient {BypassCacheOnRetrieve = false};
+            var client = new SyndicationClient
+                                {
+                                    BypassCacheOnRetrieve = false
+                                };
             client.SetRequestHeader("user-agent", USER_AGENT);
             return client;
         }
