@@ -37,4 +37,26 @@
             </StackPanel>
         </Grid>
     </DataTemplate>    
+    <DataTemplate x:Key="SemanticZoomTemplate">
+        <StackPanel Width="300" Margin="0,4,14,0" DataContext="{Binding Group}">
+            <TextBlock Text="{Binding Title}" Style="{StaticResource SubheaderTextStyle}"/>          
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Total Items: " Style="{StaticResource TitleTextStyle}" MaxHeight="60"/>
+                <TextBlock Text="{Binding ItemCount}" Style="{StaticResource TitleTextStyle}" MaxHeight="60"
+                                   Margin="10 0 0 0"/>
+                <TextBlock Text="New Items: " Style="{StaticResource TitleTextStyle}" FontWeight="Bold" MaxHeight="60"
+                                   Margin="10 0 0 0"/>
+                <TextBlock Text="{Binding NewItemCount}" Style="{StaticResource TitleTextStyle}" 
+                                   FontWeight="Bold"
+                                   MaxHeight="60"
+                                   Margin="10 0 0 0"/>
+
+            </StackPanel>
+            <Image Height="300" Margin="0,12,18,20" Stretch="UniformToFill">
+                <Image.Source>
+                    <BitmapImage UriSource="{Binding Items[0].DefaultImageUri}"/>
+                </Image.Source>
+            </Image>            
+        </StackPanel>
+    </DataTemplate>
 </ResourceDictionary>

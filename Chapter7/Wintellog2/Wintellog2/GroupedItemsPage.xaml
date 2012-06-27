@@ -64,19 +64,12 @@
             <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Grid.Column="1" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
 
-        <!-- Horizontal scrolling grid used in most view states -->
-        <ScrollViewer
-            x:Name="itemGridScrollViewer"
-            AutomationProperties.AutomationId="ItemGridScrollViewer"
-            Grid.Row="1"
-            Margin="0,-3,0,0"
-            Style="{StaticResource HorizontalScrollViewerStyle}">
-
+        <SemanticZoom x:Name="semanticViewer" Grid.Row="1">
+            <SemanticZoom.ZoomedInView>
             <GridView
                 x:Name="itemGridView"
                 AutomationProperties.AutomationId="ItemGridView"
-                AutomationProperties.Name="Grouped Items"
-                Margin="116,0,40,46"
+                AutomationProperties.Name="Grouped Items"                
                 ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
                 ItemTemplate="{StaticResource Blog250x250ItemTemplate}"
                 SelectionMode="None"
@@ -85,7 +78,7 @@
 
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <VirtualizingStackPanel Orientation="Horizontal"/>
+                        <VirtualizingStackPanel Orientation="Horizontal" Margin="116,0,40,46"/>
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
                 <GridView.GroupStyle>
@@ -109,7 +102,19 @@
                     </GroupStyle>
                 </GridView.GroupStyle>
             </GridView>
-        </ScrollViewer>
+        </SemanticZoom.ZoomedInView>
+            
+        <SemanticZoom.ZoomedOutView>
+            <GridView x:Name="groupGridView" Foreground="White" Margin="116,0,40,46"
+                        ItemTemplate="{StaticResource SemanticZoomTemplate}">
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid ItemHeight="400" ItemWidth="304" VerticalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>                                     
+            </GridView>
+        </SemanticZoom.ZoomedOutView>
+    </SemanticZoom>
 
         <!-- Vertical scrolling list only used when snapped -->
         <ScrollViewer
