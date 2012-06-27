@@ -32,6 +32,7 @@ namespace Wintellog2
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
             DefaultViewModel["Groups"] = App.Instance.DataSource.GroupList;
+            groupGridView.ItemsSource = groupedItemsViewSource.View.CollectionGroups;
         }
 
         /// <summary>
