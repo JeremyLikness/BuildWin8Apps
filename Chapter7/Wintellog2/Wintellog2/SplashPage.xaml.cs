@@ -153,7 +153,7 @@ namespace Wintellog2
 
                     var toast = notificationTemplate.CreateNotification();
                     var date = DateTimeOffset.Now.AddSeconds(30);
-                    var scheduledToast = new ScheduledToastNotification(toast.Content, date);
+                    var scheduledToast = new ScheduledToastNotification(toast.Content, date);                    
                     notifier.AddToSchedule(scheduledToast);
                 }
             }
