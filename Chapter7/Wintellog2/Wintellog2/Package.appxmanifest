@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="30af2642-49bc-4668-9112-0907e608ee82" Publisher="CN=Jeremy" Version="1.0.0.0" />
+  <Identity Name="BUILD.cea9796e-2695-4715-8a16-ce25db83f0fb" Publisher="CN=Jeremy" Version="1.0.0.0" />
   <Properties>
     <DisplayName>Wintellog2</DisplayName>
     <PublisherDisplayName>Jeremy</PublisherDisplayName>
