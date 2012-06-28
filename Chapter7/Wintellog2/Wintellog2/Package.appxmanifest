@@ -15,8 +15,8 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Wintellog2.App">
-      <VisualElements DisplayName="Wintellog2" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Wintellog2" ForegroundText="dark" BackgroundColor="white" ToastCapable="true">
-        <DefaultTile ShowName="allLogos" />
+      <VisualElements DisplayName="Wintellog2" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Wintellog 2nd Version for Chapter 7" ForegroundText="dark" BackgroundColor="white" ToastCapable="true">
+        <DefaultTile ShowName="allLogos" WideLogo="Assets\WideLogo.png" />
         <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>
     </Application>
