@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Wintellog3.Common;
@@ -15,6 +17,8 @@ namespace Wintellog3
     /// </summary>
     public sealed partial class ItemDetailPage
     {
+        private string _selection = string.Empty;
+
         public ItemDetailPage()
         {
             InitializeComponent();
@@ -31,6 +35,8 @@ namespace Wintellog3
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            App.Instance.Share = Share; 
+
             // Allow saved page state to override the initial item to display
             if (pageState != null && pageState.ContainsKey("SelectedItem"))
             {
@@ -41,6 +47,39 @@ namespace Wintellog3
             DefaultViewModel["Group"] = item.Group;
             DefaultViewModel["Items"] = item.Group.Items;
             flipView.SelectedItem = item;
+        }
+
+        private void Share(DataTransferManager dataTransferManager, DataRequestedEventArgs dataRequestedEventArgs)
+        {
+            var item = flipView.SelectedItem as BlogItem;
+            
+            if (item == null)
+            {
+                return;
+            }
+
+            if (string.IsNullOrEmpty(_selection))
+            {
+                dataRequestedEventArgs.Request.Data.Properties.Title = item.Title;            
+                dataRequestedEventArgs.Request.Data.Properties.Description =
+                    string.Format("Blog post from {0}.", item.Group.Title);
+                dataRequestedEventArgs.Request.Data.SetText(item.Description);
+                dataRequestedEventArgs.Request.Data.SetUri(item.PageUri);
+    
+                if (item.DefaultImageUri != null)
+                {
+                    dataRequestedEventArgs.Request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(item.DefaultImageUri));
+                }
+            }
+            else
+            {
+                dataRequestedEventArgs.Request.Data.Properties.Title = string.Format("Excerpt from {0}", item.Title);
+                dataRequestedEventArgs.Request.Data.Properties.Description =
+                    string.Format("An excerpt from the {0} blog at {1}.", item.Group.Title, item.PageUri);
+                dataRequestedEventArgs.Request.Data.SetText(string.Format("{0}\r\n\r\n{1}",
+                    _selection,
+                    item.PageUri));
+            }            
         }
 
         /// <summary>
@@ -87,6 +126,19 @@ namespace Wintellog3
                                         title,
                                         title,
                                         string.Format("Item={0}", item.Id));
+            }
+        }
+
+        private void RichTextBlock_SelectionChanged_1(object sender, RoutedEventArgs e)
+        {
+            var richTextBlock = sender as RichTextBlock;
+            if (richTextBlock != null)
+            {
+                _selection = richTextBlock.SelectedText;
+            }
+            else
+            {
+                _selection = string.Empty;
             }
         }
     }

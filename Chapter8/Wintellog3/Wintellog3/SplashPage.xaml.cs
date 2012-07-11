@@ -42,8 +42,8 @@ namespace Wintellog3
             Window.Current.SizeChanged += Current_SizeChanged;
 
             InitializeComponent();
-
             PositionElements();
+            App.Instance.RegisterForShare();
         }
 
         private void PositionElements()

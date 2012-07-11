@@ -130,7 +130,7 @@
                 AutomationProperties.Name="Grouped Items"
                 Margin="10,-10,0,60"
                 ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
-                ItemTemplate="{StaticResource Standard80ItemTemplate}"
+                ItemTemplate="{StaticResource Blog80ItemTemplate}"
                 SelectionMode="None"
                 IsItemClickEnabled="True"
                 ItemClick="ItemView_ItemClick">
@@ -189,7 +189,7 @@
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemListScrollViewer" Storyboard.TargetProperty="Visibility">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
                         </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridScrollViewer" Storyboard.TargetProperty="Visibility">
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="semanticViewer" Storyboard.TargetProperty="Visibility">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>

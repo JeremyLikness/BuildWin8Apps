@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Wintellog3.Common;
+using Wintellog3.DataModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,6 +34,8 @@ namespace Wintellog3
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            App.Instance.Share = Share;
+
             // Allow saved page state to override the initial item to display
             if (pageState != null && pageState.ContainsKey("SelectedItem"))
             {
@@ -44,6 +49,21 @@ namespace Wintellog3
             LayoutRoot.DataContext = item; // binding above does not update automatically
             flipView.SelectedItem = item.DefaultImageUri;
             _itemId = item.Id;
+        }
+
+        private void Share(DataTransferManager dataTransferManager, DataRequestedEventArgs dataRequestedEventArgs)
+        {
+            var item = DefaultViewModel["CurrentItem"] as BlogItem;
+            var image = (Uri) flipView.SelectedItem;
+
+            if (item == null)
+            {
+                return;
+            }
+
+            dataRequestedEventArgs.Request.Data.Properties.Title = item.Title;
+            dataRequestedEventArgs.Request.Data.Properties.Description = string.Format("Image from blog post {0}.", item.Title);
+            dataRequestedEventArgs.Request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(image));            
         }
 
         /// <summary>

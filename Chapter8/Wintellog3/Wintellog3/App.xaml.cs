@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Networking.PushNotifications;
 using Windows.UI.StartScreen;
@@ -53,6 +54,22 @@ namespace Wintellog3
         public bool Extended { get; set; }
 
         public BlogDataSource DataSource { get; private set; }
+
+        public void RegisterForShare()
+        {
+            var dataManager = DataTransferManager.GetForCurrentView();
+            dataManager.DataRequested += DataManager_DataRequested;
+        }
+
+        public Action<DataTransferManager, DataRequestedEventArgs> Share { get; set; }
+
+        void DataManager_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            if (Share != null)
+            {
+                Share(sender, args);
+            }
+        }
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

@@ -119,15 +119,17 @@
             Style="{StaticResource VerticalScrollViewerStyle}">
 
             <StackPanel>
-                <TextBlock Text="{Binding Subtitle}" Margin="20,0,18,20" Style="{StaticResource TitleTextStyle}" MaxHeight="60"/>
-                <Image Source="{Binding Image}" Margin="20,0,18,0" MaxHeight="160" Stretch="UniformToFill"/>
-                <TextBlock Margin="20,20,18,30" Text="{Binding Description}" Style="{StaticResource BodyTextStyle}"/>
+                <TextBlock Text="{Binding Title}" Margin="20,0,18,20" Style="{StaticResource TitleTextStyle}" MaxHeight="60"/>                
+                <StackPanel Margin="20,20,18,30" Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource BodyTextStyle}" Text="Total Items: "/>
+                    <TextBlock Style="{StaticResource BodyTextStyle}" Text="{Binding ItemCount}"/>
+                </StackPanel>
                 <ListView
                     AutomationProperties.AutomationId="ItemListView"
                     AutomationProperties.Name="Items In Group"
                     Margin="10,0,0,60"
                     ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
-                    ItemTemplate="{StaticResource Standard80ItemTemplate}"
+                    ItemTemplate="{StaticResource Blog80ItemTemplate}"
                     SelectionMode="None"
                     IsItemClickEnabled="True"
                     ItemClick="ItemView_ItemClick"/>
