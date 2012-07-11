@@ -52,6 +52,7 @@ namespace Wintellog3
 
             // Either way, active the window
             Window.Current.Activate();
+            App.Instance.Share = null;
         }
 
         /// <summary>

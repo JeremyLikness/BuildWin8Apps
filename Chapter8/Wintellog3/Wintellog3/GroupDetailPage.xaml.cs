@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Wintellog3.Common;
@@ -29,9 +30,24 @@ namespace Wintellog3
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            App.Instance.Share = Share;
             var group = App.Instance.DataSource.GetGroup((string)navigationParameter);
             DefaultViewModel["Group"] = group;
             DefaultViewModel["Items"] = group.Items;
+        }
+
+        private void Share(DataTransferManager dataTransferManager, DataRequestedEventArgs dataRequestedEventArgs)
+        {
+            var group = DefaultViewModel["Group"] as BlogGroup;
+            
+            if (group == null)
+            {
+                return;
+            }
+
+            dataRequestedEventArgs.Request.Data.Properties.Title = group.Title;
+            dataRequestedEventArgs.Request.Data.SetUri(group.RssUri);
+            dataRequestedEventArgs.Request.Data.Properties.Description = "Wintellog RSS feed.";
         }
 
         /// <summary>
