@@ -92,7 +92,7 @@
                             <!-- Content is allowed to flow across as many columns as needed -->
                             <common:RichTextColumns x:Name="richTextColumns" Margin="117,0,117,47">
                                 <RichTextBlock x:Name="richTextBlock" Width="560" Style="{StaticResource ItemRichTextStyle}"
-                                               SelectionChanged="RichTextBlock_SelectionChanged_1">
+                                                SelectionChanged="RichTextBlock_SelectionChanged_1">
                                     <Paragraph>
                                         <Run FontSize="26.667" FontWeight="Light" Text="{Binding Title}"/>
                                         <LineBreak/>
