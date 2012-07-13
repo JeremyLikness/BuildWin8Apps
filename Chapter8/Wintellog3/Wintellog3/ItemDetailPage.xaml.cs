@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
@@ -49,7 +51,7 @@ namespace Wintellog3
             flipView.SelectedItem = item;
         }
 
-        private void Share(DataTransferManager dataTransferManager, DataRequestedEventArgs dataRequestedEventArgs)
+        private async void Share(DataTransferManager dataTransferManager, DataRequestedEventArgs dataRequestedEventArgs)
         {
             var item = flipView.SelectedItem as BlogItem;
             
@@ -70,16 +72,42 @@ namespace Wintellog3
                 {
                     dataRequestedEventArgs.Request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(item.DefaultImageUri));
                 }
+
+                var data = await CustomData(item);
+                dataRequestedEventArgs.Request.Data.SetData("http://schema.org/BlogPosting", data);
             }
             else
             {
+
                 dataRequestedEventArgs.Request.Data.Properties.Title = string.Format("Excerpt from {0}", item.Title);
                 dataRequestedEventArgs.Request.Data.Properties.Description =
                     string.Format("An excerpt from the {0} blog at {1}.", item.Group.Title, item.PageUri);
                 dataRequestedEventArgs.Request.Data.SetText(string.Format("{0}\r\n\r\n{1}",
                     _selection,
-                    item.PageUri));
+                    item.PageUri));                
             }            
+        }
+
+        private static async Task<string> CustomData(BlogItem item)
+        {
+            var schema = new
+                {
+                    type = "http://shema.org/BlogPosting",
+                    properties = new
+                        {
+                            description = string.Format(
+                            "Blog post from {0}.", 
+                            item.Group.Title),
+                            image = item.DefaultImageUri,
+                            name = item.Title,
+                            url = item.PageUri,
+                            audience = "Windows 8 Developers",
+                            datePublished = item.PostDate,
+                            headline = item.Title,
+                            articleBody = item.Description
+                        }
+                };
+            return await JsonConvert.SerializeObjectAsync(schema);
         }
 
         /// <summary>
@@ -132,14 +160,8 @@ namespace Wintellog3
         private void RichTextBlock_SelectionChanged_1(object sender, RoutedEventArgs e)
         {
             var richTextBlock = sender as RichTextBlock;
-            if (richTextBlock != null)
-            {
-                _selection = richTextBlock.SelectedText;
-            }
-            else
-            {
-                _selection = string.Empty;
-            }
+            _selection = richTextBlock != null ? 
+                richTextBlock.SelectedText : string.Empty;
         }
     }
 }
