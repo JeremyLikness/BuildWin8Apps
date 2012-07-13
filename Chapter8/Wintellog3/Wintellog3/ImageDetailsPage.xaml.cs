@@ -61,7 +61,7 @@ namespace Wintellog3
                 return;
             }
 
-            dataRequestedEventArgs.Request.Data.Properties.Title = item.Title;
+            dataRequestedEventArgs.Request.Data.Properties.Title = item.Title;            
             dataRequestedEventArgs.Request.Data.Properties.Description = string.Format("Image from blog post {0}.", item.Title);
             dataRequestedEventArgs.Request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(image));            
         }

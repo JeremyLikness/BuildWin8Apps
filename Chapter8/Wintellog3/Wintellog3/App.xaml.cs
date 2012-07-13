@@ -69,6 +69,11 @@ namespace Wintellog3
             {
                 Share(sender, args);
             }
+            else
+            {
+                args.Request
+                    .FailWithDisplayText("Please choose a blog or item to enable sharing.");
+            }
         }
 
         /// <summary>
@@ -131,7 +136,7 @@ namespace Wintellog3
             var deferral = e.SuspendingOperation.GetDeferral();
             await SuspensionManager.SaveAsync();
             deferral.Complete();
-        }
+        }        
 
         /// <summary>
         /// Invoked when the application is activated to display search results.
