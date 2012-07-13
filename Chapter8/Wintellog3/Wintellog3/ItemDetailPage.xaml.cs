@@ -78,10 +78,9 @@ namespace Wintellog3
             }
             else
             {
-
                 dataRequestedEventArgs.Request.Data.Properties.Title = string.Format("Excerpt from {0}", item.Title);
                 dataRequestedEventArgs.Request.Data.Properties.Description =
-                    string.Format("An excerpt from the {0} blog at {1}.", item.Group.Title, item.PageUri);
+                    string.Format("An excerpt from the {0} blog at {1}.", item.Group.Title, item.Group.RssUri);
                 dataRequestedEventArgs.Request.Data.SetText(string.Format("{0}\r\n\r\n{1}",
                     _selection,
                     item.PageUri));                
@@ -159,9 +158,9 @@ namespace Wintellog3
 
         private void RichTextBlock_SelectionChanged_1(object sender, RoutedEventArgs e)
         {
-            var richTextBlock = sender as RichTextBlock;
-            _selection = richTextBlock != null ? 
-                richTextBlock.SelectedText : string.Empty;
+            var richTextControl = sender as RichTextBlock;
+            _selection = richTextControl != null ? 
+                richTextControl.SelectedText : string.Empty;
         }
     }
 }
