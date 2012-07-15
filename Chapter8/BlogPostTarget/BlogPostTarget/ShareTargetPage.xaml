@@ -62,13 +62,15 @@
 
             <Grid Grid.Row="1" Grid.ColumnSpan="2">
                 <StackPanel Visibility="{Binding ShowBlog, Converter={StaticResource BooleanToVisibilityConverter}}"
-                            Orientation="Vertical"
-                            DataContext="{Binding BlogPost}">
-                    <HyperlinkButton NavigateUri="{Binding properties.url}" Content="{Binding properties.headline}"/>
+                            Orientation="Vertical">
+                    <HyperlinkButton NavigateUri="{Binding BlogPost.properties.url}"
+                                        Content="{Binding BlogPost.properties.headline}"/>
                     <ScrollViewer Height="200">
                         <RichTextBlock Margin="20">
                             <Paragraph>
-                                <Run FontWeight="SemiLight" FontSize="13" Text="{Binding properties.articleBody}"/>
+                                <Run FontWeight="SemiLight" 
+                                        FontSize="13" 
+                                        Text="{Binding BlogPost.properties.articleBody}"/>
                             </Paragraph>
                         </RichTextBlock>
                     </ScrollViewer>

@@ -53,17 +53,15 @@ namespace BlogPostTarget
                 DefaultViewModel["ShowImage"] = true;
             }
 
+            DefaultViewModel["ShowBlog"] = false;
+
             const string BLOG_POST = "http://schema.org/BlogPosting";
             if (!_shareOperation.Data.Contains(BLOG_POST)) return;
 
             var data = await _shareOperation.Data.GetDataAsync(BLOG_POST);
 
-            if (data == null)
-            {
-                DefaultViewModel["ShowBlog"] = false;
-                return;
-            }
-
+            if (data == null) return;
+            
             DefaultViewModel["ShowBlog"] = true;
             DefaultViewModel["BlogPost"] = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType((string) data,
                 new

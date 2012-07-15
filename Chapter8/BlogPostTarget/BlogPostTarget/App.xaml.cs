@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -21,7 +11,7 @@ namespace BlogPostTarget
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    sealed partial class App
     {
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -29,8 +19,8 @@ namespace BlogPostTarget
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            InitializeComponent();
+            Suspending += OnSuspending;
         }
 
         /// <summary>
@@ -56,7 +46,7 @@ namespace BlogPostTarget
 
             // Create a Frame to act navigation context and navigate to the first page
             var rootFrame = new Frame();
-            if (!rootFrame.Navigate(typeof(MainPage)))
+            if (!rootFrame.Navigate(typeof (MainPage)))
             {
                 throw new Exception("Failed to create initial page");
             }
@@ -84,9 +74,9 @@ namespace BlogPostTarget
         /// Invoked when the application is activated as the target of a sharing operation.
         /// </summary>
         /// <param name="args">Details about the activation request.</param>
-        protected override void OnShareTargetActivated(Windows.ApplicationModel.Activation.ShareTargetActivatedEventArgs args)
+        protected override void OnShareTargetActivated(ShareTargetActivatedEventArgs args)
         {
-            var shareTargetPage = new BlogPostTarget.ShareTargetPage();
+            var shareTargetPage = new ShareTargetPage();
             shareTargetPage.Activate(args);
         }
     }
