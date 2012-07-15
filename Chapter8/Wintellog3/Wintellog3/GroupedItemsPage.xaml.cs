@@ -63,26 +63,8 @@ namespace Wintellog3
         {
             // Navigate to the appropriate destination page, configuring the new page
             // by passing required information as a navigation parameter
-            string itemId = ((BlogItem) e.ClickedItem).Id;
+            var itemId = ((BlogItem) e.ClickedItem).Id;
             Frame.Navigate(typeof (ItemDetailPage), itemId);
-        }
-
-        private async void Channel_Click_1(object sender, RoutedEventArgs e)
-        {
-            var message = App.Instance.Channel != null
-                                 ? "The channel has been copied to the clipboard."
-                                 : string.Format("Error: {0}", App.Instance.ChannelError);
-
-            var dataPackage = new DataPackage();
-            
-            if (App.Instance.Channel != null)
-            {
-                dataPackage.SetText(App.Instance.Channel.Uri);
-            }
-            Clipboard.SetContent(dataPackage);
-
-            var dialog = new MessageDialog(message);
-            await dialog.ShowAsync();
-        }
+        }        
     }
 }
