@@ -1,15 +1,16 @@
 ﻿using System;
+using Callisto.Controls;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Networking.PushNotifications;
+using Windows.UI.ApplicationSettings;
+using Windows.UI.Popups;
 using Windows.UI.StartScreen;
 using Windows.UI.Xaml;
 using Wintellog3.Common;
 using Wintellog3.DataModel;
-
-// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
 namespace Wintellog3
 {
@@ -90,11 +91,37 @@ namespace Wintellog3
             {
                 Window.Current.Activate();
                 return;
-            }
+            }            
 
+            RegisterSettings();
             ExtendedSplash(args.SplashScreen, args);
         }
-        
+
+        private void RegisterSettings()
+        {
+            var pane = SettingsPane.GetForCurrentView();
+            pane.CommandsRequested += Pane_CommandsRequested;
+        }
+
+        void Pane_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            var aboutCommand = new SettingsCommand("About", "About", SettingsHandler);
+            args.Request.ApplicationCommands.Add(aboutCommand);
+        }
+
+        private SettingsFlyout _flyout;
+
+        private void SettingsHandler(IUICommand command)
+        {
+            _flyout = new SettingsFlyout
+                {
+                    HeaderText = "About",
+                    Content = new WintellogSettings(),
+                    IsOpen = true
+                };
+            _flyout.Closed += (o, e) => _flyout = null;
+        }
+
         public async void PinToStart(object sender, string id, string shortName, string displayName, string args)
         {
             var logo = new Uri("ms-appx:///Assets/Logo.png");
@@ -152,6 +179,8 @@ namespace Wintellog3
             {
                 ExtendedSplash(args.SplashScreen, args);
             }
+
+            RegisterSettings();
         }
 
         private static void ExtendedSplash(SplashScreen splashScreen, object args)
