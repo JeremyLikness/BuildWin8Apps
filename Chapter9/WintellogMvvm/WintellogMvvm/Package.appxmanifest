@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="BUILD.689be26d-71ed-4c60-a840-ba7ba6dd366c" Publisher="CN=Jeremy" Version="4.0.0.0" />
+  <Properties>
+    <DisplayName>Wintellog Mvvm</DisplayName>
+    <PublisherDisplayName>Jeremy</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.0</OSMinVersion>
+    <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="WintellogMvvm.App">
+      <VisualElements DisplayName="Wintellog Mvvm" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Wintellog Application for Chapter 9" ForegroundText="dark" BackgroundColor="white">
+        <DefaultTile ShowName="allLogos" WideLogo="Assets\WideLogo.png" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+      </VisualElements>
+      <Extensions>
+        <Extension Category="windows.search" />
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
