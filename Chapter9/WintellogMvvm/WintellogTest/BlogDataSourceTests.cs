@@ -96,7 +96,6 @@ namespace WintellogTest
                     return cached;
                 };
 
-
             // simulate loading groups
             await _target.LoadGroups();
 
