@@ -12,8 +12,9 @@
             </Style>
         </Grid.Resources>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Splash">
-            <StackPanel Orientation="Vertical">
-                <Image Source="Assets/SplashScreen.png"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="Assets/SplashScreen.png" HorizontalAlignment="Center"
+                       VerticalAlignment="Top" Stretch="None"/>
                 <TextBlock 
                     x:Name="Status"
                     Text="Initializing..." 

@@ -9,7 +9,7 @@ namespace WintellogTest
     [TestClass]
     public class BlogDataSourceTests
     {
-        private BlogDataSource _target;        
+        private BlogDataSource _target;
         private StorageUtilityTest _storageUtilityTest;
         private DialogTest _dialogTest;
         private ApplicationContextTest _applicationContextTest;
@@ -68,33 +68,35 @@ namespace WintellogTest
             var actual = _target.GetItem(expected.Id);
             Assert.AreSame(expected, actual, "Test failed: actual item does not match expected.");
         }
-        
+
         [TestMethod]
         public async Task GivenNewItemsExistWhenGroupIsPopulatedThenTotalAndNewItemsShouldBeCorrect()
         {
             // simulate a cached item
             var cached = new BlogItem {Id = Guid.NewGuid().ToString()};
-            
+
+            // simulate a blog 
+            var blog = new BlogGroup {Id = Guid.NewGuid().ToString()};
+
             // give a false hash code
             _storageUtilityTest.Items = new[] {"123"};
+
+            _storageUtilityTest.Restore =
+                (type, folder, hashCode) =>
+                    {
+                        if (type == typeof (BlogGroup))
+                        {
+                            return blog;
+                        }
+
+                        return cached;
+                    };
 
             // simulate a new item 
             var newItem = new BlogItem {Id = Guid.NewGuid().ToString()};
             _syndicationHelperTest.BlogItems.Add(newItem);
 
-            // simulate a blog 
-            var blog = new BlogGroup {Id = Guid.NewGuid().ToString()};
             _syndicationHelperTest.BlogGroups.Add(blog);
-
-            _storageUtilityTest.Restore = (type, folder, hashCode) =>
-                {
-                    if (type == typeof(BlogGroup))
-                    {
-                        return blog;
-                    }
-
-                    return cached;
-                };
 
             // simulate loading groups
             await _target.LoadGroups();
@@ -103,7 +105,7 @@ namespace WintellogTest
             Assert.AreEqual(1, _target.GroupList.Count, "Task failed: should have generated one group.");
 
             // now simulate loading items
-            foreach(var group in _target.GroupList)
+            foreach (var group in _target.GroupList)
             {
                 await _target.LoadAllItems(group);
             }
@@ -115,10 +117,12 @@ namespace WintellogTest
             Assert.AreEqual(1, _target.GroupList[0].NewItemCount, "Test failed: new item count should have been 1.");
 
             // list should match
-            CollectionAssert.AreEquivalent(new[] { cached, newItem }, _target.GroupList[0].Items, "Test failed: lists do not match.");
+            CollectionAssert.AreEquivalent(new[] {cached, newItem}, _target.GroupList[0].Items,
+                                            "Test failed: lists do not match.");
 
             // dialog should have been called with an error message
-            Assert.IsTrue(!string.IsNullOrEmpty(_dialogTest.Message), "Test failed: dialog was not called with error message.");
+            Assert.IsTrue(!string.IsNullOrEmpty(_dialogTest.Message),
+                            "Test failed: dialog was not called with error message.");
         }
     }
 }
