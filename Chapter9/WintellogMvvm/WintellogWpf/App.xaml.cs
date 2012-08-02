@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using PortableWintellog;
+﻿using PortableWintellog;
 using PortableWintellog.Contracts;
 using PortableWintellog.Data;
 
@@ -8,7 +7,7 @@ namespace WintellogWpf
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         public App()
         {
@@ -17,7 +16,8 @@ namespace WintellogWpf
             Ioc.Register<IApplicationContext>(ioc => new ApplicationContext());
             Ioc.Register<IDialog>(ioc => new WpfDialog());
             Ioc.Register<ISyndicationHelper>(ioc => new SyndicationHelper());
-            Ioc.Register(ioc => new BlogDataSource(ioc.Resolve<IStorageUtility>(),
+            Ioc.Register(ioc => new BlogDataSource(
+                ioc.Resolve<IStorageUtility>(),
                 ioc.Resolve<IApplicationContext>(),
                 ioc.Resolve<IDialog>(),
                 ioc.Resolve<ISyndicationHelper>()));            
