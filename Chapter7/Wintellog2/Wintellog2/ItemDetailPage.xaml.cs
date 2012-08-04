@@ -82,7 +82,7 @@ namespace Wintellog2
             if (item != null)
             {
                 var title = string.Format("Post: {0}", item.Title);
-                App.Instance.PinToStart(this,
+                App.Instance.PinToStart(sender,
                                         string.Format("Wintellog.{0}", item.Id.GetHashCode()),
                                         title,
                                         title,

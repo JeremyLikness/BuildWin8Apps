@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="BUILD.689be26d-71ed-4c60-a840-ba7ba6dd366c" Publisher="CN=Jeremy" Version="1.0.0.0" />
+  <Identity Name="BUILD.689be26d-71ed-4c60-a840-ba7ba6dd366c" Publisher="CN=Jeremy" Version="3.0.0.0" />
   <Properties>
-    <DisplayName>Wintellog3</DisplayName>
+    <DisplayName>Wintellog</DisplayName>
     <PublisherDisplayName>Jeremy</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

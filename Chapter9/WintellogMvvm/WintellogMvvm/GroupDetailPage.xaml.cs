@@ -87,7 +87,7 @@ namespace WintellogMvvm
             if (group == null) return;
             
             var title = string.Format("Blog: {0}", group.Title);
-            App.Instance.PinToStart(this,
+            App.Instance.PinToStart(sender,
                                     string.Format("Wintellog.{0}", group.Id.GetHashCode()),
                                     title,
                                     title,
