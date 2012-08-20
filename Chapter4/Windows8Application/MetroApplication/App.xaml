@@ -1,9 +1,9 @@
 ﻿<Application
-    x:Class="MetroApplication.App"
+    x:Class="Windows8Application.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MetroApplication"
-    xmlns:localData="using:MetroApplication.Data">
+    xmlns:local="using:Windows8Application"
+    xmlns:localData="using:Windows8Application.Data">
 
     <Application.Resources>
         <ResourceDictionary>

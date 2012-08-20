@@ -1,8 +1,8 @@
 ﻿<UserControl
-    x:Class="MetroApplication.About"
+    x:Class="Windows8Application.About"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MetroApplication"
+    xmlns:local="using:Windows8Application"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -45,7 +45,7 @@
                     </TransitionCollection>
                 </Grid.Transitions>
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Chapter 4 Metro App" Foreground="Black" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="26.667" />
+                    <TextBlock Text="Chapter 4 Windows 8 App" Foreground="Black" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="26.667" />
                     <TextBlock Text="by Jeremy Likness" Foreground="Black" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="18" />
                     <TextBlock Text="Visit my blog at:" Foreground="Black" FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="16" Margin="0 20 0 0"/>
                     <HyperlinkButton Content="http://csharperimage.jeremylikness..." Click="HyperlinkButton_Click_1"/>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using MetroApplication.Common;
+using Windows8Application.Common;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Media.Imaging;
 // Applications may use this model as a starting point and build on it, or discard it entirely and
 // replace it with something appropriate to their needs.
 
-namespace MetroApplication.Data
+namespace Windows8Application.Data
 {
     /// <summary>
     /// Base class for <see cref="SampleDataItem"/> and <see cref="SampleDataGroup"/> that

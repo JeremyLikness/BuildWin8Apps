@@ -1,4 +1,4 @@
-﻿using MetroApplication.Data;
+﻿using Windows8Application.Data;
 
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls;
 
 // The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
-namespace MetroApplication
+namespace Windows8Application
 {
     /// <summary>
     /// A page that displays a grouped collection of items.

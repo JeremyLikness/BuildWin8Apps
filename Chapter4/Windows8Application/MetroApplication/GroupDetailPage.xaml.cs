@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using MetroApplication.Data;
+using Windows8Application.Data;
 using Windows.UI.Xaml.Controls;
 
 // The Group Detail Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234229
 
-namespace MetroApplication
+namespace Windows8Application
 {
     /// <summary>
     /// A page that displays an overview of a single group, including a preview of the items

@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MetroApplication.Common">
+    xmlns:local="using:Windows8Application.Common">
     
-    <x:String x:Key="AppName">Metro Application</x:String>
+    <x:String x:Key="AppName">Windows 8 Application</x:String>
     
     <Style x:Key="SettingsBackButtonStyle" TargetType="Button">
         <Setter Property="MinWidth" Value="0"/>
