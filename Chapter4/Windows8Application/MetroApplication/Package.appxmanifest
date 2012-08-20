@@ -2,7 +2,7 @@
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
   <Identity Name="6df0fc0c-98b9-4853-99c4-c8f3586e41a5" Publisher="CN=Jeremy" Version="1.0.0.0" />
   <Properties>
-    <DisplayName>MetroApplication</DisplayName>
+    <DisplayName>Windows 8 Application</DisplayName>
     <PublisherDisplayName>Jeremy</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
