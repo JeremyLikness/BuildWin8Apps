@@ -123,7 +123,7 @@ namespace Touch
             if (e.Key.Equals(VirtualKey.Control))
             {
                 _isCtrlKeyPressed = false;
-                AddWithFocus("CTRL key released.");
+                AddWithFocus("Ctrl key released.");
             }
         }
 
@@ -132,7 +132,7 @@ namespace Touch
             if (e.Key.Equals(VirtualKey.Control) && !_isCtrlKeyPressed)
             {
                 _isCtrlKeyPressed = true;
-                AddWithFocus("CTRL Key pressed.");
+                AddWithFocus("Ctrl Key pressed.");
             }
             else if (_isCtrlKeyPressed)
             {
