@@ -11,7 +11,7 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace MetroApplication.Common
+namespace Windows8Application.Common
 {
     /// <summary>
     /// SuspensionManager captures global session state to simplify process lifetime management

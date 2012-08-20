@@ -3,7 +3,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 
-namespace MetroApplication.Common
+namespace Windows8Application.Common
 {
     internal class SettingsFlyout
     {

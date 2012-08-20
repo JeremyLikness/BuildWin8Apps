@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace MetroApplication
+namespace Windows8Application
 {
     public sealed partial class About
     {

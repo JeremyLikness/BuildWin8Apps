@@ -1,6 +1,6 @@
 ﻿using System;
-using MetroApplication.Common;
-using MetroApplication.Data;
+using Windows8Application.Common;
+using Windows8Application.Data;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.ApplicationSettings;
@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Grid App template is documented at http://go.microsoft.com/fwlink/?LinkId=234226
 
-namespace MetroApplication
+namespace Windows8Application
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

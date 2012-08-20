@@ -7,8 +7,8 @@
     <ProjectGuid>{50CCDE44-EF7B-41BB-A342-7622DA8966A4}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MetroApplication</RootNamespace>
-    <AssemblyName>MetroApplication</AssemblyName>
+    <RootNamespace>Windows8Application</RootNamespace>
+    <AssemblyName>Windows8Application</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

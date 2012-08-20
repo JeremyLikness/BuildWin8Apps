@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Data;
 
-namespace MetroApplication.Common
+namespace Windows8Application.Common
 {
     /// <summary>
     /// Implementation of <see cref="INotifyPropertyChanged"/> to simplify models.

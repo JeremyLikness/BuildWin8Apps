@@ -14,8 +14,8 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="MetroApplication.App">
-      <VisualElements DisplayName="Metro Application" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="MetroApplication" ForegroundText="dark" BackgroundColor="white">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Windows8.App">
+      <VisualElements DisplayName="Windows 8 Application" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Windows 8 Application" ForegroundText="dark" BackgroundColor="white">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>

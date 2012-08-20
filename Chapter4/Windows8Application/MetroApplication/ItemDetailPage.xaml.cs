@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using MetroApplication.Common;
-using MetroApplication.Data;
+using Windows8Application.Common;
+using Windows8Application.Data;
 using Windows.UI.Xaml.Controls;
 
 // The Item Detail Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
 
-namespace MetroApplication
+namespace Windows8Application
 {
     /// <summary>
     /// A page that displays details for a single item within a group while allowing gestures to
