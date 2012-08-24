@@ -126,6 +126,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Netflix_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Service References\NetflixService\service.edmx" />
   </ItemGroup>
   <ItemGroup>
@@ -134,7 +135,7 @@
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />
     <None Include="Service References\NetflixService\Reference.datasvcmap">
-      <Generator>DataServicesClientSingleFileGeneratorCore</Generator>
+      <Generator>DataServicesCoreClientGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
@@ -153,20 +154,27 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Data.Edm.WindowsStore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.WindowsStore.5.0.0-rc\lib\.NETCore\Microsoft.Data.Edm.WindowsStore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData.WindowsStore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.WindowsStore.5.0.0-rc\lib\.NETCore\Microsoft.Data.OData.WindowsStore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client.WindowsStore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.WindowsStore.5.0.0-rc\lib\.NETCore\Microsoft.Data.Services.Client.WindowsStore.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial.WindowsStore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.WindowsStore.5.0.0-rc\lib\.NETCore\System.Spatial.WindowsStore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <ServiceReferenceMetadataStorage Include="Service References\NetflixService\">
       <Type>datasvcmap</Type>
     </ServiceReferenceMetadataStorage>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Data.OData.Metro">
-      <HintPath>C:\Program Files (x86)\Microsoft WCF Data Services\5.0\bin\Metro\Microsoft.Data.OData.Metro.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client.Metro">
-      <HintPath>C:\Program Files (x86)\Microsoft WCF Data Services\5.0\bin\Metro\Microsoft.Data.Services.Client.Metro.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Spatial.Metro">
-      <HintPath>C:\Program Files (x86)\Microsoft WCF Data Services\5.0\bin\Metro\System.Spatial.Metro.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
