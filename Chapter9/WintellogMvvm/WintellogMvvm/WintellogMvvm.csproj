@@ -208,12 +208,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Callisto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Callisto.1.0.10\lib\winrt45\Callisto.dll</HintPath>
+    <Reference Include="Callisto">
+      <HintPath>..\packages\Callisto.1.1.0\lib\winrt45\Callisto.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\winrt45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\winrt45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
