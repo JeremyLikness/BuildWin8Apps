@@ -138,18 +138,30 @@ namespace ImageHelper2
                 {
                     if (savedFile != null)
                     {
-                        IRandomAccessStream output = await
-                            savedFile.OpenAsync(FileAccessMode.ReadWrite);
-                        BitmapEncoder encoder =
-                            await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, output);
-                        encoder.SetPixelData(BitmapPixelFormat.Rgba8,
-                             BitmapAlphaMode.Straight,
-                            (uint)_writeableBitmap.PixelWidth,
-                            (uint)_writeableBitmap.PixelHeight,
-                            96.0, 96.0,
-                            _writeableBitmap.PixelBuffer.ToArray());
-                        await encoder.FlushAsync();
-                        await output.GetOutputStreamAt(0).FlushAsync();
+                        using (var output = await
+                            savedFile.OpenAsync(FileAccessMode.ReadWrite))
+                        {
+                            var encoder =
+                                await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, output);
+
+                            byte[] pixels;
+
+                            using (var stream = _writeableBitmap.PixelBuffer.AsStream())
+                            {
+                                pixels = new byte[stream.Length];
+                                await stream.ReadAsync(pixels, 0, pixels.Length);
+                            }
+
+                            encoder.SetPixelData(BitmapPixelFormat.Rgba8,
+                                                    BitmapAlphaMode.Straight,
+                                                    (uint)_writeableBitmap.PixelWidth,
+                                                    (uint)_writeableBitmap.PixelHeight,
+                                                    96.0, 96.0,
+                                                    pixels);
+
+                            await encoder.FlushAsync();
+                            await output.FlushAsync();
+                        }
                     }
                 }
                 catch (Exception ex)

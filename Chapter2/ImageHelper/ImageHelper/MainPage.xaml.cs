@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
@@ -119,7 +120,7 @@ namespace ImageHelper
             if (result != null)
             {
                 await LoadBitmap(await result.OpenAsync(
-                    Windows.Storage.FileAccessMode.Read));                
+                    FileAccessMode.Read));                
             }
         }
 
@@ -127,9 +128,10 @@ namespace ImageHelper
         {
             if (_writeableBitmap != null)
             {
-                var picker = new FileSavePicker();
-                picker.SuggestedStartLocation =
-                        PickerLocationId.PicturesLibrary;
+                var picker = new FileSavePicker
+                                 {
+                                     SuggestedStartLocation = PickerLocationId.PicturesLibrary
+                                 };
                 picker.FileTypeChoices.Add("Image", new List<string>() { ".png" });
                 picker.DefaultFileExtension = ".png";
                 picker.SuggestedFileName = "photo";
@@ -139,18 +141,30 @@ namespace ImageHelper
                 {
                     if (savedFile != null)
                     {
-                        IRandomAccessStream output = await
-                            savedFile.OpenAsync(FileAccessMode.ReadWrite);
-                        BitmapEncoder encoder =
-                            await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, output);
-                        encoder.SetPixelData(BitmapPixelFormat.Rgba8,
-                             BitmapAlphaMode.Straight,
-                            (uint)_writeableBitmap.PixelWidth,
-                            (uint)_writeableBitmap.PixelHeight,
-                            96.0, 96.0,
-                            _writeableBitmap.PixelBuffer.ToArray());
-                        await encoder.FlushAsync();
-                        await output.GetOutputStreamAt(0).FlushAsync();
+                        using(var output = await
+                            savedFile.OpenAsync(FileAccessMode.ReadWrite))
+                        {
+                            var encoder =
+                                await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, output);
+
+                            byte[] pixels;
+
+                            using (var stream = _writeableBitmap.PixelBuffer.AsStream())
+                            {
+                                pixels = new byte[stream.Length];
+                                await stream.ReadAsync(pixels, 0, pixels.Length);
+                            }
+
+                            encoder.SetPixelData(BitmapPixelFormat.Rgba8,
+                                                    BitmapAlphaMode.Straight,
+                                                    (uint) _writeableBitmap.PixelWidth,
+                                                    (uint) _writeableBitmap.PixelHeight,
+                                                    96.0, 96.0,
+                                                    pixels);
+                            
+                            await encoder.FlushAsync();                            
+                            await output.FlushAsync();
+                        }
                     }
                 }
                 catch (Exception ex)
